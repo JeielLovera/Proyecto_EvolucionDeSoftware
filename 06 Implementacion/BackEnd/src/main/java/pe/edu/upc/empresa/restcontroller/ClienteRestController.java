@@ -88,6 +88,20 @@ public class ClienteRestController {
 			return new ResponseEntity<Cliente>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+	@ApiOperation("Fetch usuario por login")
+	@GetMapping(value="/{usuario}/{contraseña}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Cliente>> fetchByLogin(@PathVariable("usuario") String usuario, @PathVariable("contraseña") String contraseña){
+		try {
+			List<Cliente> cliente = clienteServ.fetchByLogin(usuario, contraseña);
+			if(cliente.size() > 0)
+				return new ResponseEntity<List<Cliente>>(cliente, HttpStatus.OK);
+			else
+				return new ResponseEntity<List<Cliente>>(HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			return new ResponseEntity<List<Cliente>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	@ApiOperation("Remove cliente por id")
 	@DeleteMapping(value= "/{id}", produces= MediaType.APPLICATION_JSON_VALUE)

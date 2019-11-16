@@ -53,4 +53,9 @@ public class ClienteServiceImpl implements ClienteService{
 		clienteRepo.deleteAll();
 	}
 
+	@Override
+	public List<Cliente> fetchByLogin(String usuario, String contraseña) throws Exception {
+		return clienteRepo.fetchByLogin(usuario, contraseña);
+	}
+
 }

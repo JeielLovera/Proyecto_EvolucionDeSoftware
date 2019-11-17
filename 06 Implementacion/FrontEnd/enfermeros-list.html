@@ -123,7 +123,7 @@
                                 <input type="text" class="form-control" placeholder="Buscar enfermero...">
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-success">Ténicos</button>
+                                <button type="submit" class="btn btn-success" onclick="buscar_enfermeros()">Ténicos</button>
                                 <button type="submit" class="btn btn-success">Licenciados</button>
                                 <button type="submit" class="btn btn-success">Fisioterapia</button>
                                 <button type="submit" class="btn btn-success">Cardio-Respiratorio</button>
@@ -135,9 +135,7 @@
         </div>
         <div class="container-fluid">
             <div class="row clearfix" id="listaEnfermeros" >
-                <!-- DESDE ESTE DIV ES -->
-                
-                <!--HASTA AQUI-->
+                <!--FUNCTION LISTAR-ENFERMEROS()-->
             </div>
         </div>
     </div>
@@ -150,15 +148,15 @@
                     <img src="assets/images/ecommerce/mona.jpg" class="img-fluid"/>
             </div>
             <div class="modal-body">
-                <h4 class="title" id="defaultModalLabel">Alfredo Durango, 33 años</h4>
-                Martín Alberto Vizcarra Cornejo (Lima, 22 de marzo de 1963) es un ingeniero civil y político peruano. 
-                Es el actual presidente de la República del Perú tras aceptarse la dimisión de su antecesor Pedro Pablo Kuczynski
+                <h4 class="title" id="nombreModal"></h4>
+                <p id="descripcionModal"></p>
                 <p></p>
-                <h5 class="title" >Especialidades</h5>
-                Terapia, Cardio, Motricidad
+                <h5 class="title">Especialidades</h5>
+                <div class="justify-content-md-center" id="especialidadesModal">
+                </div>
                 <p></p>
                 <div class="row justify-content-md-center">
-                    <button type="button" class="btn btn-success waves-effect">CONTRATAR</button>
+                    <button type="button" class="btn btn-success waves-effect" onclick=realizar_contrato()>CONTRATAR</button>
                 </div> 
             </div>
         </div>

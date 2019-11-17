@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.edu.upc.empresa.model.entity.Enfermero;
 import pe.edu.upc.empresa.model.entity.EnfermeroEspecialidad;
 import pe.edu.upc.empresa.model.repository.EnfermeroEspecialidadRepository;
 import pe.edu.upc.empresa.service.EnfermeroEspecialidadService;
@@ -52,5 +53,12 @@ public class EnfermeroEspecialidadServiceImpl implements EnfermeroEspecialidadSe
 	public void deleteAll() throws Exception {
 		enfermespecRepository.deleteAll();
 	}
+
+	@Transactional(readOnly=true)
+	@Override
+	public List<EnfermeroEspecialidad> findByCenfermero(Enfermero cenfermero) throws Exception {
+		return enfermespecRepository.findByCenfermero(cenfermero);
+	}
+
 
 }

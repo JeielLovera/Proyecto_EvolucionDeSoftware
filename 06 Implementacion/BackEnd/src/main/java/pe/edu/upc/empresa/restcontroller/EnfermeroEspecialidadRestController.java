@@ -20,8 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import pe.edu.upc.empresa.model.entity.Enfermero;
 import pe.edu.upc.empresa.model.entity.EnfermeroEspecialidad;
 import pe.edu.upc.empresa.service.EnfermeroEspecialidadService;
+import pe.edu.upc.empresa.service.EnfermeroService;
+
 
 @RestController
 @RequestMapping("/enfermeroEspecialidades")
@@ -30,6 +33,9 @@ public class EnfermeroEspecialidadRestController {
 
 	@Autowired
 	private EnfermeroEspecialidadService enfermespecServ;
+	@Autowired
+	private EnfermeroService enfServ;
+
 	
 	@ApiOperation("Recuperar todos los enfermeroEspecialidades")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -127,6 +133,24 @@ public class EnfermeroEspecialidadRestController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@ApiOperation("Fetch enfermeroEspecialidad by Id enfermero")
+	@GetMapping(value = "/enfermero/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<EnfermeroEspecialidad>> fetchByIdEnfermero(@PathVariable("id") Integer id){
+		try {
+			Optional<Enfermero> ef=enfServ.findById(id);
+			List<EnfermeroEspecialidad> lista=enfermespecServ.findByCenfermero(ef.get());
+			if(!lista.isEmpty()) {
+				return new ResponseEntity<List<EnfermeroEspecialidad>>(lista,HttpStatus.OK);
+			}
+			else {
+				return new ResponseEntity<List<EnfermeroEspecialidad>>(HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<List<EnfermeroEspecialidad>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 }

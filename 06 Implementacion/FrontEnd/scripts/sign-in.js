@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", limpiarMemoria, false);
+
+function limpiarMemoria() {
+    localStorage.clear();
+}
+
 function loguearse() {
   var usuario = document.getElementById('usuario').value;
   var contraseña = document.getElementById('contraseña').value;
@@ -9,7 +15,7 @@ function loguearse() {
     .then(datos => {
         for(let valor of datos)
         {
-            localStorage.setItem("idClliente",Number(valor.ccliente)); 
+            localStorage.setItem("idCliente",Number(valor.ccliente)); 
             localStorage.setItem("nombreCliente", valor.ncliente);
             window.location="./enfermeros-list.html";
         }

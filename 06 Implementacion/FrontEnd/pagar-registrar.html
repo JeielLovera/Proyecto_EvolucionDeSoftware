@@ -16,6 +16,10 @@
 <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 <!-- Custom Css -->
 <link  rel="stylesheet" href="assets/css/style.min.css">
+<!-- Scripts-->
+<script>
+        var cliente = localStorage.getItem("nombreCliente");
+</script>
 </head>
 
 <body class="theme-green">
@@ -85,7 +89,11 @@
                 <div class="user-info">
                     <a class="image" href="profile.html"><img src="assets/images/profile_av.jpg" alt="User"></a>
                     <div class="detail">
-                        <h4>Cliente</h4>
+                        <h4>
+                            <script type="text/javascript">
+                                document.write(cliente);
+                            </script>
+                        </h4>
                     </div>
                 </div>
             </li>

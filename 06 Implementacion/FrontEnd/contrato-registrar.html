@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html class="no-js " lang="en">
 <head>
 <meta charset="utf-8">
@@ -99,81 +99,128 @@
 <!--MAIN CONTENT-->
 <!--MAIN CONTENT-->
 <!--MAIN CONTENT-->
+
 <section class="content">
     <div class="body_scroll">
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <h2>Enfermeros</h2>
+                    <h2>Contrato</h2>
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-12">                
-                    <button class="btn btn-primary btn-icon float-right right_icon_toggle_btn" type="button"><i class="zmdi zmdi-arrow-right"></i></button>
+                    <button class="btn btn-primary btn-icon float-right right_icon_toggle_btn" type="button"><i class="zmdi zmdi-arrow-right"></i></button>                                
                 </div>
             </div>
         </div>
+        
+        <!--Tiempo de servicio -->
         <div class="container-fluid">
-            <div class="row">
+            <div class="row clearfix">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="body">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="zmdi zmdi-search"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Buscar enfermero...">
+                            <h2 class="card-inside-title">Tiempo de Servicio</h2>
+                            <div class="row clearfix" id="contServicios">                                
                             </div>
+                            <div class="col-sm-2">                                
+                                <button onclick="AgregarServicios()" class="btn btn-primary btn-icon btn-icon-mini btn-round"> + </button>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--Actividad-->
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <!--col-lg-7 col-md-6 col-sm-12"-->
+                <div class="card">
+                    <div class="body">
+                        <div id="contActividades"></div>
+                            <div class="col align-self-end">
+                                <button onclick="AgregarActividad()" class="btn btn-primary btn-icon btn-icon-mini btn-round"> + </button>
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <!--Selecionar Familiar-->
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body">
+                            <h2 class="card-inside-title">Seleccionar familiar</h2>
                             <div>
-                                <button type="submit" class="btn btn-success" onclick="buscar_enfermeros()">Ténicos</button>
-                                <button type="submit" class="btn btn-success">Licenciados</button>
-                                <button type="submit" class="btn btn-success">Fisioterapia</button>
-                                <button type="submit" class="btn btn-success">Cardio-Respiratorio</button>
+                                <table class="table table-hover product_item_list c_table theme-color mb-0">
+                                    <tbody id="contFamiliares">                                     
+                                        
+                                    </tbody>
+                                </table>    
                             </div>
                         </div>
                     </div>
-                </div>        
+                </div>
             </div>
         </div>
+        <!--Dirección-->
         <div class="container-fluid">
-            <div class="row clearfix" id="listaEnfermeros" >
-                <!--FUNCTION LISTAR-ENFERMEROS()-->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body">
+                            <h2 class="card-inside-title">Dirección</h2>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Dirección" id="direccion"/>
+                                </div>
+                            </div>
+
+                            <div>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input id="aceptarContrato" type="checkbox">
+                                                    <label for="aceptarContrato">
+                                                        <p>Acepto las
+                                                            <a href="">Políticas y Condiciones</a>
+                                                        </p>
+                                                    </label>
+                                                </div>
+                                            </td>                                          
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-primary waves-effect" onclick="RegistrarContrato()" type="button">REGISTRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
     </div>
 </section>
 
-<div class="modal fade" id="enfermeroModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                    <img src="assets/images/ecommerce/mona.jpg" class="img-fluid"/>
-            </div>
-            <div class="modal-body">
-                <h4 class="title" id="nombreModal"></h4>
-                <p id="descripcionModal"></p>
-                <p></p>
-                <h5 class="title">Especialidades</h5>
-                <div class="justify-content-md-center" id="especialidadesModal">
-                </div>
-                <p></p>
-                <div class="row justify-content-md-center">
-                    <button type="button" class="btn btn-success waves-effect" onclick=realizar_contrato()>CONTRATAR</button>
-                </div> 
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Jquery Core Js --> 
 <script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 <script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="assets/plugins/momentjs/moment.js"></script> <!-- Moment Plugin Js --> 
 <!-- Bootstrap Material Datetime Picker Plugin Js -->
 <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
 <script src="assets/js/pages/forms/basic-form-elements.js"></script>
-<script src="../FrontEnd/scripts/enfermero-list.js"></script>
-
+<script src="../FrontEnd/scripts/RegistrarContrato.js"></script>
 </body>
 </html>

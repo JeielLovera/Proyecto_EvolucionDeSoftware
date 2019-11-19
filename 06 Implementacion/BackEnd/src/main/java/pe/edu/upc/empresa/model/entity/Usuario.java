@@ -16,10 +16,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="usuarios")
 public class Usuario {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cusuario;
@@ -40,6 +41,7 @@ public class Usuario {
 	
 	@ManyToOne
 	@JoinColumn(name="ccliente",nullable=false)
+	@JsonIgnoreProperties("usuarios")
 	@NotNull(message = "Ingrese Cliente")
 	private Cliente ccliente;
 

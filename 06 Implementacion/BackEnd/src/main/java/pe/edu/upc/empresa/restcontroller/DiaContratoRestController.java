@@ -43,6 +43,21 @@ public class DiaContratoRestController {
 		}
 	}
 	
+	@ApiOperation("Recuperar todos los diacontratos por cliente")
+	@GetMapping(value = "/cliente/{ccliente}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<DiaContrato>>fetchByContrato(@PathVariable("ccliente") Integer ccliente)
+	{
+		try {
+			List<DiaContrato> diacontratos=diacontratoServ.fetchByCliente(ccliente);
+			if(diacontratos.size() > 0)
+				return new ResponseEntity<List<DiaContrato>>(diacontratos,HttpStatus.OK);
+			else
+				return new ResponseEntity<List<DiaContrato>>(HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			return new ResponseEntity<List<DiaContrato>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@ApiOperation("Save diacontrato")
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object>save(@Valid @RequestBody DiaContrato diacontrato)

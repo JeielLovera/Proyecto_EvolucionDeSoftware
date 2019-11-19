@@ -53,4 +53,16 @@ public class EnfermeroServiceImpl implements EnfermeroService {
 		enfermeroRepository.deleteAll();
 	}
 
+	@Transactional(readOnly=true)
+	@Override
+	public List<Enfermero> fetchByGrado(String ngrado) throws Exception {
+		return enfermeroRepository.fetchByGrado(ngrado);
+	}
+
+	@Transactional(readOnly=true)
+	@Override
+	public List<Enfermero> fetchByEspecialidad(String nespecialidad) throws Exception {
+		return enfermeroRepository.fetchByEspecialidad(nespecialidad);
+	}
+
 }

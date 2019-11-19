@@ -17,7 +17,7 @@ function loguearse() {
         {
             localStorage.setItem("idCliente",Number(valor.ccliente)); 
             localStorage.setItem("nombreCliente", valor.ncliente);
-            window.location="./enfermeros-list.html";
+            window.location="./index.html";
         }
     })
     .catch(function(error)

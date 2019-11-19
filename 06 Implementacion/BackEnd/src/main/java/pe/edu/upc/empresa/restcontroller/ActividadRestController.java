@@ -42,6 +42,21 @@ public class ActividadRestController {
 			return new ResponseEntity<List<Actividad>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+	@ApiOperation("Recuperar todos las actividades por contrato")
+	@GetMapping(value = "/contrato/{ccontrato}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Actividad>>fetchByContrato(@PathVariable("ccontrato") Integer ccontrato)
+	{
+		try {
+			List<Actividad> actividades=actividadServ.fetchByContrato(ccontrato);
+			if(actividades.size() > 0)
+				return new ResponseEntity<List<Actividad>>(actividades,HttpStatus.OK);
+			else
+				return new ResponseEntity<List<Actividad>>(HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			return new ResponseEntity<List<Actividad>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	@ApiOperation("Save actividad")
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -217,7 +217,7 @@ function insertarEnfermedad(){
                     }
                 }
             }).then(data => {
-                window.location="./enfermeros-list.html";
+                window.location="./index.html";
             }).catch(function(error) {
                 console.log(error);
             });

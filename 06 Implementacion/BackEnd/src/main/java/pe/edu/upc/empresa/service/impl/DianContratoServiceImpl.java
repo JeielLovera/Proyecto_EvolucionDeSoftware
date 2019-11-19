@@ -54,4 +54,9 @@ public class DianContratoServiceImpl implements DiaContratoService{
 		diacontratoRepo.deleteAll();
 	}
 
+	@Override
+	public List<DiaContrato> fetchByCliente(Integer ccliente) throws Exception {
+		return diacontratoRepo.fetchByCliente(ccliente);
+	}
+
 }

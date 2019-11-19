@@ -53,4 +53,9 @@ public class ActividadServiceImpl implements ActividadService{
 		actividadRepo.deleteAll();
 	}
 
+	@Override
+	public List<Actividad> fetchByContrato(Integer ccontrato) throws Exception {
+		return actividadRepo.fetchByContrato(ccontrato);
+	}
+
 }

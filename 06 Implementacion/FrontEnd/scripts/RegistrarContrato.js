@@ -277,7 +277,7 @@ function RegistrarContrato(){
        url:ruta,
        data:{             
      cenfermero: {
-       cenfermero:8,//localStorage.getItem("enfermeroSeleccionado"),     
+       cenfermero:localStorage.getItem("enfermeroSeleccionado"),     
      },
      cusuario: {
        ccliente: {

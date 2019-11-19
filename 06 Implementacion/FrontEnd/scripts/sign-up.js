@@ -17,7 +17,6 @@ function getLastUsuario(){
     axios.get(ruta)
     .then(data => {
         maxUsuario = data.data[data.data.length-1].cusuario;
-        console.log(maxUsuario);
     })
 }
 
@@ -206,10 +205,6 @@ function insertarEnfermedad(){
             idUsuario = Number(maxUsuario) + Number(i);
 
             var rutaPOSTEnfermedad = 'http://localhost:8081/usuarioEnfermedades';
-        
-            console.log(idEnfermedad);
-            console.log(idUsuario);
-
         
             //Insertar del Usuario
             axios({

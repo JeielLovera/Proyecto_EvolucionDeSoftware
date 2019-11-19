@@ -130,6 +130,7 @@ function registrar(){
                 ttelefono: telefonoCliente,
                 tcorreo: usuarioCliente,
                 tcontrasenya: contraseniaCliente,
+                imgurl:'https://i.ibb.co/MnyG8NH/usuario.png'
             }
         }).then(data => {
 
@@ -166,6 +167,7 @@ function registrar(){
                             tdniusuario: dniUsuario,
                             dnacimiento: fnacimientousuario,
                             ccliente: cliente,
+                            imgurl:'https://i.ibb.co/MnyG8NH/usuario.png'
                         }
                     }).then(data => {
                         auxFamRegistrados++;
@@ -219,7 +221,7 @@ function insertarEnfermedad(){
                     }
                 }
             }).then(data => {
-                window.location="./index.html";
+                window.location="./sign-in.html";
             }).catch(function(error) {
                 console.log(error);
             });

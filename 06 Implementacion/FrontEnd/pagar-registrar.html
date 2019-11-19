@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
-<title>Enfermeros</title>
+<title>Realizar Pago</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- Favicon-->
 <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="index.html">
                                 <div class="icon-circle mb-2 bg-purple"><i class="zmdi zmdi-account-calendar"></i></div>
                                 <p class="mb-0">Contratos</p>
                             </a>
@@ -63,7 +63,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="enfermeros-list.html">
                                 <div class="icon-circle mb-2 bg-blue"><i class="zmdi zmdi-account"></i></div>
                                 <p class="mb-0">Enfermeros</p>
                             </a>
@@ -81,13 +81,13 @@
 <aside id="leftsidebar" class="sidebar">
     <div class="navbar-brand">
         <button class="btn-menu ls-toggle-btn" type="button"><i class="zmdi zmdi-menu"></i></button>
-        <a href="index.html"><img src="assets/images/loader.svg" width="25" alt="Aero"><span class="m-l-10">Te Lo Cuido</span></a>
+        <a href="index.html"><img src="assets/images/logo2.svg" width="25" alt="Aero"><span class="m-l-10">Vida Plena</span></a>
     </div>
     <div class="menu">
         <ul class="list">
             <li>
                 <div class="user-info">
-                    <a class="image" href="profile.html"><img src="assets/images/profile_av.jpg" alt="User"></a>
+                    <a class="image" href="profile.html"><img src="assets/images/usuario.png" alt="User"></a>
                     <div class="detail">
                         <h4>
                             <script type="text/javascript">
@@ -99,6 +99,7 @@
             </li>
             <li><a href="index.html"><i class="zmdi zmdi-home"></i><span>Inicio</span></a></li>
             <li><a href="my-profile.html"><i class="zmdi zmdi-account"></i><span>Mi Perfil</span></a></li>
+            <li><a href="enfermeros-list.html"><i class="zmdi zmdi-search"></i><span>Buscar Enfermeros</span></a></li>
         </ul>
     </div>
 </aside>
@@ -231,10 +232,16 @@
                                 
                                 <!---BOTOOOOOOOOOOON-->
                                 <div class="row justify-content-center">
-                                        <div class="col-md-4">
-                                <button class="subscribe btn btn-primary btn-block">Pagar</button>
-                            </div>
-                        </div>
+                                    <div class="col-md-4">
+                                        <button type="button" class="subscribe btn btn-success btn-block" onclick="finalizar()">PAGAR</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-4">
+                                        <button onclick="volverRegistroContrato()" class="subscribe btn btn-danger btn-block" type="button">CANCELAR</button>
+                                    </div>
+                                </div>
+                                
                             </form>
                             
                             
@@ -257,5 +264,6 @@
 
 <script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
 <script src="assets/js/pages/forms/basic-form-elements.js"></script>
+<script src="../scripts/pagar-registrar.js"></script>
 </body>
 </html>

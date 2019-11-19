@@ -58,6 +58,18 @@ public class Enfermero {
 	@NotEmpty(message = "Ingrese descripcion del enfermero")
 	@Column(name = "tdescripcion", nullable = false)
 	private String tdescripcion;
+	
+	@NotEmpty(message = "Ingrese url de la imagen del enfermero")
+	@Column(name = "imgurl", nullable = false)
+	private String imgurl;
+
+	public String getImgurl() {
+		return imgurl;
+	}
+
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
 
 	public Integer getCenfermero() {
 		return cenfermero;

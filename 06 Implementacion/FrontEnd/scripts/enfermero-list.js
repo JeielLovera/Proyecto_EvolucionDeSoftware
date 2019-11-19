@@ -16,7 +16,7 @@ function listar_enfermeros(){
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div class="card">
                             <div class="body product_item">
-                                <img src="assets/images/ecommerce/mona.jpg" class="img-fluid cp_img" />
+                                <img src="${enfermero.imgurl}" class="img-fluid cp_img" />
                                 <div>
                                     <h5></h5>
                                 </div>
@@ -42,7 +42,7 @@ function listar_enfermeros(){
             console.log(error);
             
         });
-        
+        console.log(localStorage.getItem("idCliente"));
 }
 
 function buscar_porgrado(grado){
@@ -57,7 +57,7 @@ function buscar_porgrado(grado){
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div class="card">
                             <div class="body product_item">
-                                <img src="assets/images/ecommerce/mona.jpg" class="img-fluid cp_img" />
+                                <img src="${enfermero.imgurl}" class="img-fluid cp_img" />
                                 <div>
                                     <h5></h5>
                                 </div>
@@ -98,7 +98,7 @@ function buscar_porespecialidad(especialidad){
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div class="card">
                             <div class="body product_item">
-                                <img src="assets/images/ecommerce/mona.jpg" class="img-fluid cp_img" />
+                                <img src="${enfermero.imgurl}" class="img-fluid cp_img" />
                                 <div>
                                     <h5></h5>
                                 </div>
@@ -134,10 +134,12 @@ function detalle_enfermero(id){
     var nombre=document.getElementById("nombreModal");
     var descripcion=document.getElementById("descripcionModal");
     var especialidades=document.getElementById("especialidadesModal");
+    var img=document.getElementById("imgModal");
 
     nombre.innerHTML='';
     descripcion.innerHTML='';
     especialidades.innerHTML='';
+    img.innerHTML='';
      
     fetch(ruta)
         .then(res => res.json())
@@ -145,6 +147,7 @@ function detalle_enfermero(id){
             nombre.innerHTML+=`${enfermero.nenfermero}, ${enfermero.cgrado.ngrado}.`;
             descripcion.innerHTML+=`${enfermero.tdescripcion}`;  
             posibleSeleccionado=Number(enfermero.cenfermero);
+            img.innerHTML+=`<img src="${enfermero.imgurl}" class="img-fluid"/>`;
             console.log(posibleSeleccionado);
         })
         .catch(function(error){
@@ -170,21 +173,71 @@ function realizar_contrato(){
     window.location="./contrato-registrar.html";
 }
 
-function buscar_personalizado(atributo){
-    var ruta = 'http://localhost:8081/enfermeros';
+function find_codigo(num,arr){
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]==num) return true;
+    }
+    return false;
+}
+
+function buscar_personalizado(){
+    var ruta = 'http://localhost:8081/enfermeroEspecialidades';
+    var condicion=document.getElementById('busqueda').value;
+    var codigo=[0];
+    lista.innerHTML='';
 
     fetch(ruta)
         .then(res=>res.json())
-        .then(enfermeros => {
-            for(let enfermero of enfermeros){
-                var temp=enfermero.nenfermero;
-                if(temp.includes(atributo)){
-                    console.log(enfermero.nenfermero);
+        .then(datos => {
+            for(let ef  of datos){
+                var nombre=ef.cenfermero.nenfermero;
+                var grado=ef.cenfermero.cgrado.ngrado;
+                var especialidad=ef.cespecialidad.nespecialidad;
+                if(!find_codigo(ef.cenfermero.cenfermero,codigo)){
+                    if(nombre.toLowerCase().indexOf(condicion.toLowerCase())!=-1 ||
+                        grado.toLowerCase().indexOf(condicion.toLowerCase())!=-1 ||
+                        especialidad.toLowerCase().indexOf(condicion.toLowerCase())!=-1){
+                            lista.innerHTML+=`
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                                <div class="card">
+                                    <div class="body product_item">
+                                        <img src="${ef.cenfermero.imgurl}" class="img-fluid cp_img" />
+                                        <div>
+                                            <h5></h5>
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <h6>${ef.cenfermero.nenfermero}<h6>                              
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <span class="m-l-10">
+                                                ${ef.cenfermero.numvaloracion}
+                                                <i class="zmdi zmdi-star col-amber"></i>
+                                            </span>
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target=#enfermeroModal onclick=detalle_enfermero(${ef.cenfermero.cenfermero})>VER DETALLES</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        codigo.push(ef.cenfermero.cenfermero);
+                    }
+                    
                 }
             }
         })
         .catch(function(error){
             console.log(error);
         });
+
+    
     //AUN EN DESARROLLO >.O
 }
+
+$('#busqueda').keypress(function(e){
+    var k=(e.keyCode ? e.keyCode : e.which);
+    if(k=='13'){
+        buscar_personalizado();
+    }
+});

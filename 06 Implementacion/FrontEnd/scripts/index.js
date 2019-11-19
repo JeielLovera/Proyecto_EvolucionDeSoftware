@@ -34,7 +34,7 @@ function listarContratos(){
         listaContratos.insertAdjacentHTML("beforeend", `
         <tr>
             <td width="23%">
-                <img src="assets/images/ecommerce/enfermera.png" alt="" width="200" height="200">
+                <img src="${diacontratos[i].ccontrato.cenfermero.imgurl}" alt="" class="img-fluid">
             </td>
             <td width="33%">
                 <p style="font-size:180%;">${diacontratos[i].ccontrato.cenfermero.nenfermero}</p>

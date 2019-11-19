@@ -44,6 +44,18 @@ public class Usuario {
 	@JsonIgnoreProperties("usuarios")
 	@NotNull(message = "Ingrese Cliente")
 	private Cliente ccliente;
+	
+	@NotEmpty(message = "Ingrese url de la imagen del usuario")
+	@Column(name = "imgurl", nullable = false)
+	private String imgurl;
+
+	public String getImgurl() {
+		return imgurl;
+	}
+
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
 
 	public Integer getCusuario() {
 		return cusuario;

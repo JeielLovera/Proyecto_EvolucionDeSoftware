@@ -47,7 +47,20 @@ public class Cliente {
 	@NotEmpty(message="Ingrese contraseña")
 	@Column(name="tcontrasenya", length= 100, nullable=false)
 	private String tcontrasenya;
-///----------
+	
+	@NotEmpty(message = "Ingrese url de la imagen del cliente")
+	@Column(name = "imgurl", nullable = false)
+	private String imgurl;
+	
+public String getImgurl() {
+		return imgurl;
+	}
+
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+
+	///----------
 	@OneToMany( mappedBy = "ccliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL )
 	@OrderBy( "cusuario ASC" )
 	@JsonIgnoreProperties("ccliente")

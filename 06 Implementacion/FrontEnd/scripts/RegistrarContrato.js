@@ -5,12 +5,12 @@ var numActividades=1;
 var idcontrato=1;
 var TotalServEnviados=0;
 var lstaFamiliares={};
+
 function CargarFamiliares(){  
   var ruta='http://localhost:8081/clientes/'+String(localStorage.getItem("idCliente"))+ '/usuarios';
   fetch(ruta)
   .then(res => res.json())
   .then(datos => {
-  console.log(datos);
   var contFamiliares=document.getElementById("contFamiliares");
   lstaFamiliares=datos;
     for(let dato of datos){      
@@ -36,36 +36,29 @@ function EnviarFamiliares(){
   var ruta='http://localhost:8081/diacontratos';
   var ruta2='http://localhost:8081/contratos';
 
+  console.log($('#fechaServ0').val());
+  console.log(document.getElementById("hiniServ0").value);
+  console.log(document.getElementById("hfinServ0").value);
   fetch(ruta2)
   .then(res => res.json())
   .then(datos => {
     var size=datos.length;
     idcontrato=datos[size-1].ccontrato;      
     for (var i=0;i<numServicios;i++){
-      var cadenafecha="fechaServ"+String(i);
+      var cadenafecha="#fechaServ"+String(i);
       var cadenahfin="hiniServ"+String(i);
       var cadenahini="hfinServ"+String(i);
-      var fecha=document.getElementById(cadenafecha).value;  
-      var Dfecha=new Date(fecha);       
+      var fecha=$(cadenafecha).val();      
       var hfin=document.getElementById(cadenahfin).value;    
       var hini=document.getElementById(cadenahini).value;    
-      hfin='2019-11-18T'+hfin+':00.403Z';
-      hini='2019-11-18T'+hini+':00.403Z';      
+      hfin=fecha+"T"+hfin+":00.403Z";
+      hini=fecha+"T"+hini+":00.403Z";      
       axios({
         method:'post',
         url:ruta,
         data:{
           ccontrato: {
-            ccontrato: idcontrato,
-            cenfermero: {
-              cenfermero: 2,                
-            },
-            cusuario: {
-              ccliente: {
-                ccliente: 2,         
-              },
-            cusuario:10,       
-            },        
+            ccontrato: idcontrato      
           },     
           dfecha: fecha,
           dfin: hfin,
@@ -82,7 +75,7 @@ function EnviarFamiliares(){
 } 
 
 function EnviarActividades(){
-  var ruta='http://localhost:8081//actividades';
+  var ruta='http://localhost:8081/actividades';
 
   for (var i=0;i<numActividades;i++){
     var cadenaTitulo="tituloAct"+String(i);
@@ -97,22 +90,22 @@ function EnviarActividades(){
       method:'post',
       url:ruta,
       data:{        
-    ccontrato: {
-      ccontrato:idcontrato,   
-    },
-    ctipoactividad: {
-      ctipoactividad: tipoAct,    
-    },
-    nactividad: Titulo,
-    tdescripcion: Descrip,
-    }
-  }).then(data=>{       
-    window.location="./enfermeros-list.html";  
-   }).catch(function(error) {
+        ccontrato: {
+          ccontrato:idcontrato,   
+        },
+        ctipoactividad: {
+          ctipoactividad: tipoAct,    
+        },
+        nactividad: Titulo,
+        tdescripcion: Descrip,
+      }
+    }).then(data=>{       
+      window.location="pagar-registrar.html";  
+    }).catch(function(error) {
        console.log(error);
    });
   
-  }  
+  }
 }
 
 
@@ -127,11 +120,11 @@ function AgregarServicios(){
       <div class="input-group-prepend">
           <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
       </div>
-      <input type="date" 
+      <input type="date" class="form-control" 
           placeholder="Fecha" id="fechaServ${numServicios}">
   </div>
 </div>
-<div class="col-sm-3">
+<div class="col-sm-4">
   <div class="input-group">
       <div class="input-group-prepend">
           <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
@@ -139,7 +132,7 @@ function AgregarServicios(){
       <input type="text" class="form-control" size="4" placeholder="Hora de inicio" id="hiniServ${numServicios}">
   </div>
 </div>
-<div class="col-sm-3">
+<div class="col-sm-4">
   <div class="input-group">
       <div class="input-group-prepend">
           <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
@@ -166,7 +159,7 @@ function AgregarActividad(){
                           <div class="row">
                               <div class="col-md-12">
                                   <div class="form-group">
-                                      <input type="password" class="form-control" placeholder="Descripcion" id="descripAct${numActividades}" />
+                                      <input type="text" class="form-control" placeholder="Descripcion" id="descripAct${numActividades}" />
                                   </div>
                               </div>
                           </div>
@@ -207,11 +200,11 @@ function InicioCarga(){
       <div class="input-group-prepend">
           <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
       </div>
-      <input type="date" 
+      <input type="date" class="form-control" 
           placeholder="Fecha" id="fechaServ0">
   </div>
 </div>
-<div class="col-sm-3">
+<div class="col-sm-4">
   <div class="input-group">
       <div class="input-group-prepend">
           <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
@@ -219,7 +212,7 @@ function InicioCarga(){
       <input type="text" class="form-control" size="4" placeholder="Hora de inicio" id="hiniServ0">
   </div>
 </div>
-<div class="col-sm-3">
+<div class="col-sm-4">
   <div class="input-group">
       <div class="input-group-prepend">
           <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
@@ -244,7 +237,7 @@ contActividades.innerHTML=`
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Descripcion" id="descripAct0" />
+                                    <input type="text" class="form-control" placeholder="Descripcion" id="descripAct0" />
                                 </div>
                             </div>
                         </div>
@@ -271,24 +264,20 @@ function RegistrarContrato(){
     var direccion=document.getElementById("direccion").value; 
     var ruta='http://localhost:8081/contratos';
     var selFamiliar=document.querySelector('input[name="selFamiliar"]:checked').value;  
-    alert(selFamiliar);
     axios({
-       method:'post',
-       url:ruta,
-       data:{             
-     cenfermero: {
-       cenfermero:localStorage.getItem("enfermeroSeleccionado"),     
-     },
-     cusuario: {
-       ccliente: {
-         ccliente:localStorage.getItem("idCliente"),   
-       },
-       cusuario:selFamiliar,    
-     },
-     ffinalizado: false,
-     tdireccion:direccion
-       }
-       }).then(data=>{      
+      method:'post',
+      url:ruta,
+      data:{             
+        cenfermero: {
+          cenfermero:localStorage.getItem("enfermeroSeleccionado"),     
+        },
+        cusuario: {
+          cusuario:selFamiliar,    
+        },
+        ffinalizado: false,
+        tdireccion:direccion
+      }
+      }).then(data=>{      
         EnviarFamiliares();
     }).catch(function(error) {
         console.log(error);
@@ -299,9 +288,9 @@ function RegistrarContrato(){
 
 }
 
-
-
-
+function volverIndex() {
+  window.location="./index.html";
+}
 
 
  

@@ -16,6 +16,10 @@
 <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 <!-- Custom Css -->
 <link  rel="stylesheet" href="assets/css/style.min.css">
+<!-- Scripts-->
+<script>
+    var cliente = localStorage.getItem("nombreCliente");
+</script>
 </head>
 
 <body class="theme-green">
@@ -47,7 +51,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="index.html">
                                 <div class="icon-circle mb-2 bg-purple"><i class="zmdi zmdi-account-calendar"></i></div>
                                 <p class="mb-0">Contratos</p>
                             </a>
@@ -59,7 +63,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="enfermeros-list.html">
                                 <div class="icon-circle mb-2 bg-blue"><i class="zmdi zmdi-account"></i></div>
                                 <p class="mb-0">Enfermeros</p>
                             </a>
@@ -69,7 +73,7 @@
             </ul>
         </li>
         <li><a href="javascript:void(0);" class="js-right-sidebar" title="Setting"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a></li>
-        <li><a href="sign-in.html" class="mega-menu" title="Sign Out"><i class="zmdi zmdi-power"></i></a></li>
+        <li><a href="javascript:void(0);" class="mega-menu" title="Sign Out"><i class="zmdi zmdi-power"></i></a></li>
     </ul>
 </div>
 
@@ -77,20 +81,25 @@
 <aside id="leftsidebar" class="sidebar">
     <div class="navbar-brand">
         <button class="btn-menu ls-toggle-btn" type="button"><i class="zmdi zmdi-menu"></i></button>
-        <a href="index.html"><img src="assets/images/loader.svg" width="25" alt="Aero"><span class="m-l-10">Te Lo Cuido</span></a>
+        <a href="index.html"><img src="assets/images/logo2.svg" width="25" alt="Aero"><span class="m-l-10">Vida Plena</span></a>
     </div>
     <div class="menu">
         <ul class="list">
             <li>
                 <div class="user-info">
-                    <a class="image" href="profile.html"><img src="assets/images/profile_av.jpg" alt="User"></a>
+                    <a class="image" href="profile.html"><img src="assets/images/usuario.png" alt="User"></a>
                     <div class="detail">
-                        <h4>Cliente</h4>
+                        <h4>
+                            <script type="text/javascript">
+                                document.write(cliente);
+                            </script>
+                        </h4>
                     </div>
                 </div>
             </li>
             <li><a href="index.html"><i class="zmdi zmdi-home"></i><span>Inicio</span></a></li>
             <li><a href="my-profile.html"><i class="zmdi zmdi-account"></i><span>Mi Perfil</span></a></li>
+            <li><a href="enfermeros-list.html"><i class="zmdi zmdi-search"></i><span>Buscar Enfermeros</span></a></li>
         </ul>
     </div>
 </aside>
@@ -118,9 +127,9 @@
                         <div class="body">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="zmdi zmdi-search"></i></span>
+                                    <span class="input-group-text"><i class="zmdi zmdi-search" ></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Buscar enfermero..." id="condicion">
+                                <input type="text" class="form-control" placeholder="Buscar enfermero..." id="busqueda">
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-success" onclick="buscar_porgrado('tecnico profesional')">Ténicos</button>
@@ -144,8 +153,7 @@
 <div class="modal fade" id="enfermeroModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                    <img src="assets/images/ecommerce/mona.jpg" class="img-fluid"/>
+            <div class="modal-header" id=imgModal>
             </div>
             <div class="modal-body">
                 <h4 class="title" id="nombreModal"></h4>
@@ -173,6 +181,6 @@
 
 <script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
 <script src="assets/js/pages/forms/basic-form-elements.js"></script>
-<script src="../FrontEnd/scripts/enfermero-list.js"></script>
+<script src="../scripts/enfermero-list.js"></script>
 </body>
 </html>

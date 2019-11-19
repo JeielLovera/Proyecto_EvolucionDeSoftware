@@ -1,13 +1,22 @@
 package pe.edu.upc.empresa.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name= "clientes")
@@ -38,7 +47,21 @@ public class Cliente {
 	@NotEmpty(message="Ingrese contraseña")
 	@Column(name="tcontrasenya", length= 100, nullable=false)
 	private String tcontrasenya;
-
+///----------
+	@OneToMany( mappedBy = "ccliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL )
+	@OrderBy( "cusuario ASC" )
+	@JsonIgnoreProperties("ccliente")
+	private List< Usuario > usuarios;	
+	
+	public Cliente() {
+		this.usuarios = new ArrayList<>();
+	}
+	
+	public List<Usuario> fetchUsuarios() {
+		return usuarios;
+	}
+///-----------
+	
 	public Integer getCcliente() {
 		return ccliente;
 	}

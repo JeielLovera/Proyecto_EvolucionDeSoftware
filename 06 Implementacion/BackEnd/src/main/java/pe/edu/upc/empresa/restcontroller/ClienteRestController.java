@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import pe.edu.upc.empresa.model.entity.Cliente;
+import pe.edu.upc.empresa.model.entity.Usuario;
 import pe.edu.upc.empresa.service.ClienteService;
 
 @RestController
@@ -116,6 +117,21 @@ public class ClienteRestController {
 			else return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@ApiOperation("Fetch all usuarios from cliente")
+	@GetMapping( path = "/{id}/usuarios", produces = MediaType.APPLICATION_JSON_VALUE )
+	public ResponseEntity< List<Usuario> > fetchAllUsuarios( @PathVariable("id") Integer id ) {
+		try {
+			Optional<Cliente> searched = clienteServ.findById(id);			
+			if(searched.isPresent()) {
+				List<Usuario> usuarios = searched.get().fetchUsuarios();
+				return new ResponseEntity< List<Usuario> >(usuarios, HttpStatus.OK);
+			} else {
+				return new ResponseEntity< List<Usuario> >(HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity< List<Usuario> >(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

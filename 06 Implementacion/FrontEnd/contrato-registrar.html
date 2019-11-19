@@ -128,37 +128,11 @@
                     <div class="card">
                         <div class="body">
                             <h2 class="card-inside-title">Tiempo de Servicio</h2>
-                            <div class="row clearfix">
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control datepicker"
-                                            placeholder="Fecha">
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" size="4" placeholder="Hora de inicio">
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control " placeholder="Hora fin">
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">                                
-                                        <button class="btn btn-primary btn-icon btn-icon-mini btn-round"> + </button>
-                                    </div>
+                            <div class="row clearfix" id="contServicios">                                
                             </div>
-                            
+                            <div class="col-sm-2">                                
+                                <button onclick="AgregarServicios()" class="btn btn-primary btn-icon btn-icon-mini btn-round"> + </button>
+                            </div>
                             
                             
                         </div>
@@ -171,39 +145,11 @@
                 <!--col-lg-7 col-md-6 col-sm-12"-->
                 <div class="card">
                     <div class="body">
-                        <h2 class="card-inside-title">Actividades</h2>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Titulo" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Descripcion" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <select class="form-control show-tick">
-                                    <option value="">Seleccione Tipo</option>
-                                    <option value="Alimentacion">Alimentacion</option>
-                                    <option value="Medicinas">Medicinas</option>
-                                    <option value="Terapia">Terapia</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <p> </p>
-                        </div>
-                        <div class="row justify-content-start">
+                        <div id="contActividades"></div>
                             <div class="col align-self-end">
-                                <button class="btn btn-primary btn-icon btn-icon-mini btn-round"> + </button>
+                                <button onclick="AgregarActividad()" class="btn btn-primary btn-icon btn-icon-mini btn-round"> + </button>
                             </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -219,31 +165,8 @@
                             <h2 class="card-inside-title">Seleccionar familiar</h2>
                             <div>
                                 <table class="table table-hover product_item_list c_table theme-color mb-0">
-                                    <tbody>
-                                        <tr>
-                                            <td width=50>
-                                                <div class="checkbox">
-                                                    <input id="delete_2" type="checkbox">
-                                                    <label for="delete_2">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td  width=80><img src="assets/images/ecommerce/1.png" width="48" alt="Product img"></td>
-                                            <td>
-                                                <h5>Juan Ramirez Velasco</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="checkbox">
-                                                    <input id="delete_3" type="checkbox">
-                                                    <label for="delete_3">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><img src="assets/images/ecommerce/10.png" width="48" alt="Product img"></td>
-                                            <td>
-                                                <h5>Romina Solares </h5>
-                                            </td>
-                                        </tr>
+                                    <tbody id="contFamiliares">                                     
+                                        
                                     </tbody>
                                 </table>    
                             </div>
@@ -261,7 +184,7 @@
                             <h2 class="card-inside-title">Dirección</h2>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Dirección" />
+                                    <input type="text" class="form-control" placeholder="Dirección" id="direccion"/>
                                 </div>
                             </div>
 
@@ -271,22 +194,21 @@
                                         <tr>
                                             <td>
                                                 <div class="checkbox">
-                                                    <input id="delete_4" type="checkbox">
-                                                    <label for="delete_4">&nbsp;</label>
+                                                    <input id="aceptarContrato" type="checkbox">
+                                                    <label for="aceptarContrato">
+                                                        <p>Acepto las
+                                                            <a href="">Políticas y Condiciones</a>
+                                                        </p>
+                                                    </label>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <p>Acepto las
-                                                    <a href="">Políticas y Condiciones</a>
-                                                </p>
-                                            </td>
+                                            </td>                                          
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
 
                             <div>
-                                <button class="btn btn-primary waves-effect" type="button">REGISTRAR</button>
+                                <button class="btn btn-primary waves-effect" onclick="RegistrarContrato()" type="button">REGISTRAR</button>
                             </div>
                         </div>
                     </div>
@@ -300,12 +222,13 @@
 <!-- Jquery Core Js --> 
 <script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 <script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="assets/plugins/momentjs/moment.js"></script> <!-- Moment Plugin Js --> 
 <!-- Bootstrap Material Datetime Picker Plugin Js -->
 <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> 
 
 <script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
 <script src="assets/js/pages/forms/basic-form-elements.js"></script>
+<script src="../FrontEnd/scripts/RegistrarContrato.js"></script>
 </body>
 </html>

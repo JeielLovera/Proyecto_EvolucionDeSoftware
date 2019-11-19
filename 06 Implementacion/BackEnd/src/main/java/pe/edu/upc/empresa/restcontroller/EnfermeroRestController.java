@@ -129,4 +129,45 @@ public class EnfermeroRestController {
 			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@ApiOperation("Fetch enfermero by Grado")
+	@GetMapping(value = "/grados/{ngrado}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Enfermero>> fetchByGrado(@PathVariable("ngrado") String ngrado)
+	{
+		try {
+			List<Enfermero> enfermeros=enfermeroServ.fetchByGrado(ngrado);
+			if(!enfermeros.isEmpty()) {
+				return new ResponseEntity<List<Enfermero>>(enfermeros,HttpStatus.OK);
+			}
+			else {
+				return new ResponseEntity<List<Enfermero>>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<List<Enfermero>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
+	@ApiOperation("Fetch enfermero by Especialidad")
+	@GetMapping(value = "/especialidades/{nespecialidad}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Enfermero>> fetchByEspecialidad(@PathVariable("nespecialidad") String nespecialidad)
+	{
+		try {
+			String temp=nespecialidad.replace("%20", " ");
+			
+			List<Enfermero> enfermeros=enfermeroServ.fetchByEspecialidad(temp);
+			if(!enfermeros.isEmpty()) {
+				return new ResponseEntity<List<Enfermero>>(enfermeros,HttpStatus.OK);
+			}
+			else {
+				return new ResponseEntity<List<Enfermero>>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<List<Enfermero>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
 }

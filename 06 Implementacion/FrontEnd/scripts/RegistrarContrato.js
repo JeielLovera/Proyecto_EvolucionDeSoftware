@@ -5,9 +5,8 @@ var numActividades=1;
 var idcontrato=1;
 var TotalServEnviados=0;
 var lstaFamiliares={};
-function CargarFamiliares(){ 
-  localStorage.setItem("idClliente",Number(2)); 
-  var ruta='http://localhost:8081/clientes/'+String(localStorage.getItem("idClliente"))+ '/usuarios';
+function CargarFamiliares(){  
+  var ruta='http://localhost:8081/clientes/'+String(localStorage.getItem("idCliente"))+ '/usuarios';
   fetch(ruta)
   .then(res => res.json())
   .then(datos => {
@@ -107,7 +106,8 @@ function EnviarActividades(){
     nactividad: Titulo,
     tdescripcion: Descrip,
     }
-  }).then(data=>{          
+  }).then(data=>{       
+    window.location="./enfermeros-list.html";  
    }).catch(function(error) {
        console.log(error);
    });
@@ -266,7 +266,7 @@ contActividades.innerHTML=`
 }
 
 function RegistrarContrato(){
-  
+  var aceptarContrato=document.getElementById("aceptarContrato").checked; 
   if (aceptarContrato==true){
     var direccion=document.getElementById("direccion").value; 
     var ruta='http://localhost:8081/contratos';
@@ -277,11 +277,11 @@ function RegistrarContrato(){
        url:ruta,
        data:{             
      cenfermero: {
-       cenfermero:8,//localStorage.getItem("enfermeroSeleccionado"),     
+       cenfermero:localStorage.getItem("enfermeroSeleccionado"),     
      },
      cusuario: {
        ccliente: {
-         ccliente:2,// localStorage.getItem("idClliente"),   
+         ccliente:localStorage.getItem("idCliente"),   
        },
        cusuario:selFamiliar,    
      },

@@ -16,10 +16,6 @@
 <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 <!-- Custom Css -->
 <link  rel="stylesheet" href="assets/css/style.min.css">
-<!-- Scripts-->
-<script>
-    var cliente = localStorage.getItem("nombreCliente");
-</script>
 </head>
 
 <body class="theme-green">
@@ -73,7 +69,7 @@
             </ul>
         </li>
         <li><a href="javascript:void(0);" class="js-right-sidebar" title="Setting"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a></li>
-        <li><a href="sign-in.html" class="mega-menu" title="Sign Out"><i class="zmdi zmdi-power"></i></a></li>
+        <li><a href="javascript:void(0);" class="mega-menu" title="Sign Out"><i class="zmdi zmdi-power"></i></a></li>
     </ul>
 </div>
 
@@ -89,11 +85,7 @@
                 <div class="user-info">
                     <a class="image" href="profile.html"><img src="assets/images/profile_av.jpg" alt="User"></a>
                     <div class="detail">
-                        <h4>
-                            <script type="text/javascript">
-                                document.write(cliente);
-                            </script>
-                        </h4>
+                        <h4>Cliente</h4>
                     </div>
                 </div>
             </li>
@@ -128,13 +120,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="zmdi zmdi-search"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Buscar enfermero...">
+                                <input type="text" class="form-control" placeholder="Buscar enfermero..." id="condicion">
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-success" onclick="buscar_enfermeros()">Ténicos</button>
-                                <button type="submit" class="btn btn-success">Licenciados</button>
-                                <button type="submit" class="btn btn-success">Fisioterapia</button>
-                                <button type="submit" class="btn btn-success">Cardio-Respiratorio</button>
+                                <button type="submit" class="btn btn-success" onclick="buscar_porgrado('tecnico profesional')">Ténicos</button>
+                                <button type="submit" class="btn btn-success" onclick="buscar_porgrado('licenciado')">Licenciados</button>
+                                <button type="submit" class="btn btn-success" onclick="buscar_porespecialidad('fisioterapia')">Fisioterapia</button>
+                                <button type="submit" class="btn btn-success" onclick="buscar_porespecialidad('cardio-respiratorio')">Cardio-Respiratorio</button>
                             </div>
                         </div>
                     </div>
@@ -178,10 +170,9 @@
 <script src="assets/plugins/momentjs/moment.js"></script> <!-- Moment Plugin Js --> 
 <!-- Bootstrap Material Datetime Picker Plugin Js -->
 <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
 <script src="assets/js/pages/forms/basic-form-elements.js"></script>
 <script src="../FrontEnd/scripts/enfermero-list.js"></script>
-
 </body>
 </html>

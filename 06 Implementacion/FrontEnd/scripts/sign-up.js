@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", inicializarVariables, false);
 var numFamiliares = 0;
 var numEnfermedades = [];
 var maxUsuario;
+var auxFamRegistrados = 0;
 
 function inicializarVariables(){
     agregarFrmFamiliar();
@@ -16,6 +17,7 @@ function getLastUsuario(){
     axios.get(ruta)
     .then(data => {
         maxUsuario = data.data[data.data.length-1].cusuario;
+        console.log(maxUsuario);
     })
 }
 
@@ -167,7 +169,11 @@ function registrar(){
                             ccliente: cliente,
                         }
                     }).then(data => {
-
+                        auxFamRegistrados++;
+                        if(auxFamRegistrados == numFamiliares)
+                        {
+                            insertarEnfermedad();
+                        }
                     }).catch(function(error) {
                         console.log(error);
                     });
@@ -180,8 +186,6 @@ function registrar(){
         }).catch(function(error) {
             console.log(error);
         });
-
-        insertarEnfermedad();
         
     }
     else{
@@ -203,6 +207,9 @@ function insertarEnfermedad(){
 
             var rutaPOSTEnfermedad = 'http://localhost:8081/usuarioEnfermedades';
         
+            console.log(idEnfermedad);
+            console.log(idUsuario);
+
         
             //Insertar del Usuario
             axios({

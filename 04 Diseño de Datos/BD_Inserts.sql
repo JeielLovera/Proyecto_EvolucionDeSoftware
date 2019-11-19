@@ -188,3 +188,4 @@ insert into reclamos values(4, '2019-11-03 18:45:31', 'El enfermero llego muy ta
 insert into reclamos values(5, '2019-10-25 10:58:28', 'Mi familiar se quejo del enfermero', 18, 4);
 insert into reclamos values(6, '2019-09-30 09:17:20', 'Parece que el enfermero no esterilizo la aguja para inyecciones', 9, 5);
 insert into reclamos values(7, '2019-10-19 12:32:19', 'Inasistencia del enfermero', 7, 1);
+

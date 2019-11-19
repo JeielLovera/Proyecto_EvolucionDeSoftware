@@ -28,10 +28,24 @@ function listarContratos(){
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-5">
                                 <label class="font-weight-bold">Fecha: </label></div>
                             <div class="col-md-3">
                                 <p align="left">${dias.dfecha}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="font-weight-bold">Hora de Inicio: </label></div>
+                            <div class="col-md-3">
+                                <p align="left">${dias.dinicio}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="font-weight-bold">Hora de Fin: </label></div>
+                            <div class="col-md-3">
+                                <p align="left">${dias.dfin}</p>
                             </div>
                         </div>
                         <div class="row">

@@ -36,9 +36,6 @@ function EnviarFamiliares(){
   var ruta='http://localhost:8081/diacontratos';
   var ruta2='http://localhost:8081/contratos';
 
-  console.log($('#fechaServ0').val());
-  console.log(document.getElementById("hiniServ0").value);
-  console.log(document.getElementById("hfinServ0").value);
   fetch(ruta2)
   .then(res => res.json())
   .then(datos => {
@@ -52,7 +49,8 @@ function EnviarFamiliares(){
       var hfin=document.getElementById(cadenahfin).value;    
       var hini=document.getElementById(cadenahini).value;    
       hfin=fecha+"T"+hfin+":00.403Z";
-      hini=fecha+"T"+hini+":00.403Z";      
+      hini=fecha+"T"+hini+":00.403Z";    
+      
       axios({
         method:'post',
         url:ruta,

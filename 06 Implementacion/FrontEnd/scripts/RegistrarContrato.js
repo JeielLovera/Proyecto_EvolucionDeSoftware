@@ -287,7 +287,8 @@ function RegistrarContrato(){
 }
 
 function volverIndex() {
-  window.location="./index.html";
+  localStorage.removeItem("enfermeroSeleccionado");
+  window.location="./enfermeros-list.html";
 }
 
 

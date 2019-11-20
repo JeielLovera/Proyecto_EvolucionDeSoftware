@@ -1,7 +1,19 @@
 document.addEventListener("DOMContentLoaded", limpiarMemoria, false);
 
+var vieneAContratar = false;
+
 function limpiarMemoria() {
-    localStorage.clear();
+    if(localStorage.getItem("enfermeroSeleccionado") != null)
+    {
+        vieneAContratar = true;
+        var enfermero =  localStorage.getItem("enfermeroSeleccionado");
+        localStorage.clear();
+        localStorage.setItem("enfermeroSeleccionado", enfermero);
+    }
+    else
+    {
+        localStorage.clear();
+    }
 }
 
 function loguearse() {
@@ -17,7 +29,8 @@ function loguearse() {
         {
             localStorage.setItem("idCliente",Number(valor.ccliente)); 
             localStorage.setItem("nombreCliente", valor.ncliente);
-            window.location="./index.html";
+            if(vieneAContratar) window.location="./contrato-registrar.html";
+            else window.location="./enfermeros-list.html";
         }
     })
     .catch(function(error)

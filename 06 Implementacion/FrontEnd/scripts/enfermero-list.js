@@ -1,7 +1,22 @@
-document.addEventListener("DOMContentLoaded", listar_enfermeros, false);
+document.addEventListener("DOMContentLoaded", inicializar, false);
 
 var lista=document.getElementById("listaEnfermeros");
 var posibleSeleccionado;
+
+function inicializar() {
+    ocultarOpciones();
+    listar_enfermeros();
+}
+
+function ocultarOpciones() {
+    var listaOpciones = document.getElementById("opcionesInvitado");
+    var cliente = localStorage.getItem("nombreCliente");
+
+    if(cliente == null)
+    {
+        listaOpciones.hidden = true;
+    }
+}
 
 function listar_enfermeros(){
     var ruta = 'http://localhost:8081/enfermeros';
@@ -170,7 +185,16 @@ function detalle_enfermero(id){
 
 function realizar_contrato(){
     localStorage.setItem("enfermeroSeleccionado",posibleSeleccionado);
-    window.location="./contrato-registrar.html";
+    var cliente = localStorage.getItem("nombreCliente");
+
+    if(cliente == null)
+    {
+        window.location="./sign-in.html";
+    }
+    else
+    {
+        window.location="./contrato-registrar.html";
+    }
 }
 
 function find_codigo(num,arr){

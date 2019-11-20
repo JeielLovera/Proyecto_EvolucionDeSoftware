@@ -5,7 +5,7 @@ function main(){
 }
 
 function finalizar(){
-
+    localStorage.removeItem("enfermeroSeleccionado");
     window.location="./index.html";
 }
 

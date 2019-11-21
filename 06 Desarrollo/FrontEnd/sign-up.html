@@ -1,0 +1,225 @@
+<!doctype html>
+<html class="no-js " lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+
+<title>Sign - Up</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon-->
+<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+<!-- Bootstrap Material Datetime Picker Css -->
+<link href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+<!-- Bootstrap Select Css -->
+<link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+<!-- Custom Css -->
+<link  rel="stylesheet" href="assets/css/style.min.css">
+<!-- Scripts-->
+<script>
+        var cliente = localStorage.getItem("nombreCliente");
+</script>
+</head>
+
+<body class="theme-green">
+
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img class="zmdi-hc-spin" src="assets/images/loader.svg" width="48" height="48" alt="Aero"></div>
+        <p>Cargando...</p>
+    </div>
+</div>
+
+<!--MAIN CONTENT-->
+<section class="content" style="margin: 3%;">
+    
+        <!--Header-->
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="body_scroll">
+                    <div class="row">
+                        <img class="logo" src="assets/images/logo2.svg" width="150" height="150" alt="Aero">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <h2 style="align-self: flex-end;"><strong>Crea una cuenta</strong></h2>&nbsp;&nbsp;
+                        <h2 style="align-self: flex-end; font-weight: 300;"> y disfruta de nuestros </h2>&nbsp;&nbsp;
+                        <h2 style="align-self: flex-end;"> <strong> beneficios</strong></h2>&nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br>
+        <div class="container-fluid">
+            <!--Datos personales del cliente -->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body" style="background: linear-gradient(to top, #a9acd7, #dbe1f1);">
+                                <div class="row clearfix">  
+                                        <div class="col-md-3" style="font-size: large;">DATOS PERSONALES</div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body">
+                            <div class="row clearfix">  
+                                <div class="col-md-3">Nombre</div>
+                            </div>
+                            <div class="row clearfix"> 
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Nombre" id="nombreCliente">
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="row clearfix">  
+                                <div class="col-md-3">Documento de Identificación (DNI)</div>
+                            </div>
+                            <div class="row clearfix"> 
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Ejm: 72654142" id="dniCliente">
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="row clearfix">  
+                                <div class="col-md-3">Número de Telefono</div>
+                            </div>
+                            <div class="row clearfix"> 
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Ejm: 974561753" id="telefonoCliente">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </br>
+            <!--Autentificacion-->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body" style="background: linear-gradient(to top, #a9acd7, #dbe1f1);">
+                                <div class="row clearfix">  
+                                        <div class="col-md-3" style="font-size: large;">AUTENTIFICACIÓN</div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body">
+                            <div class="row clearfix">  
+                                <div class="col-md-3">Usuario</div>
+                            </div>
+                            <div class="row clearfix"> 
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Usuario" id="usuarioCliente">
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="row clearfix">  
+                                <div class="col-md-3">Contraseña</div>
+                            </div>
+                            <div class="row clearfix"> 
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Contraseña" id="contraseniaCliente">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </br>
+            <!--Ingresar Familiares-->
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body" style="background: linear-gradient(to top, #a9acd7, #dbe1f1);">
+                                <div class="row clearfix">  
+                                        <div class="col-md-3" style="font-size: large;">FAMILIARES</div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Selecionar Familiar-->
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card" id="frmFamiliar">
+
+                    </div>
+                    <div class="col-sm-2">                                
+                            <button onclick="agregarFrmFamiliar()" class="btn btn-primary btn-icon btn-icon-mini btn-round"> + </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br>
+        <!--Terminos y Condiciones-->
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body">
+                            <div>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <input id="cbTerminos" type="checkbox">
+                                                    <label for="cbTerminos">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p>Acepto las <a href="">Políticas y Condiciones</a></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Boton de Registrar-->
+        <div>
+            <button onclick="registrar()" class="btn btn-primary waves-effect" type="button">REGISTRARSE</button>
+            <button onclick="volverSignIn()" class="btn btn-primary waves-effect" style="background-color: red;" type="button">CANCELAR</button>
+        </div>
+    </div>
+</section>
+
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+
+<script src="assets/plugins/momentjs/moment.js"></script> <!-- Moment Plugin Js --> 
+<!-- Bootstrap Material Datetime Picker Plugin Js -->
+<script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> 
+
+<script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
+<script src="assets/js/pages/forms/basic-form-elements.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../scripts/sign-up.js"></script>
+</body>
+</html>

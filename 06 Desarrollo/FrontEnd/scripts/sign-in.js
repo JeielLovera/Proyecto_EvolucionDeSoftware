@@ -29,8 +29,8 @@ function loguearse() {
         {
             localStorage.setItem("idCliente",Number(valor.ccliente)); 
             localStorage.setItem("nombreCliente", valor.ncliente);
-            if(vieneAContratar) window.location="./contrato-registrar.html";
-            else window.location="./enfermeros-list.html";
+            if(vieneAContratar) window.location="./index.html";
+            else window.location="./index.html";
         }
     })
     .catch(function(error)
